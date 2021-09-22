@@ -5,7 +5,7 @@ import { request } from 'umi';
 
 /** 获取规则列表 GET /api/rule */
 export async function rule(params, options) {
-  return request('/api/rule', {
+  return request('/api/product', {
     method: 'GET',
     params: { ...params },
     ...(options || {}),

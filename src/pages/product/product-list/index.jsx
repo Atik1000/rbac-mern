@@ -190,6 +190,7 @@ const TableList = () => {
           >
             <PlusOutlined /> New
           </Button>,
+
         ]}
         request={rule}
         columns={columns}
@@ -231,7 +232,7 @@ const TableList = () => {
         </FooterToolbar>
       )}
       <ModalForm
-        title="新建规则"
+        title="Modal form"
         width="400px"
         visible={createModalVisible}
         onVisibleChange={handleModalVisible}
@@ -291,7 +292,7 @@ const TableList = () => {
       >
         {currentRow?.name && (
           <ProDescriptions
-            column={2}
+            column={1}
             title={currentRow?.name}
             request={async () => ({
               data: currentRow || {},

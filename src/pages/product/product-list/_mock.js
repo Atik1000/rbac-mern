@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { parse } from 'url';
 
 // mock tableListDataSource
@@ -11,18 +10,12 @@ const genList = (current, pageSize) => {
       key: index,
       disabled: i % 6 === 0,
       href: 'https://ant.design',
-      avatar: [
-        'https://gw.alipayobjects.com/zos/rmsportal/eeHMaZBwmTvLdIwMfBpg.png',
-        'https://gw.alipayobjects.com/zos/rmsportal/udxAbMEhpwthVVcjLXik.png',
-      ][i % 2],
-      name: `TradeCode ${index}`,
-      owner: '曲丽丽',
-      desc: '这是一段描述',
-      callNo: Math.floor(Math.random() * 1000),
-      status: (Math.floor(Math.random() * 10) % 4).toString(),
-      updatedAt: new Date(),
-      createdAt: new Date(),
-      progress: Math.ceil(Math.random() * 100),
+      name: `Product ${index}`,
+      desc: 'amazing description',
+      price: Math.floor(Math.random() * 100),
+      manufacturingDate: new Date(),
+      expireDate: new Date(),
+      size: Math.floor(Math.random() * 1000),
     });
   }
 
@@ -30,9 +23,27 @@ const genList = (current, pageSize) => {
   return tableListDataSource;
 };
 
+const getProductList = (current, pageSize) => {
+  const productListDataSource = [];
+
+  for (let i = 0; i < pageSize; i += 1) {
+    productListDataSource.push({
+      key: index,
+      title: `Product ${index}`,
+      price: Math.floor(Math.random() * 100),
+      description: 'amazing description',
+      manufactureDate: new Date(),
+      expireDate: new Date(),
+      size: Math.floor(Math.random() * 1000),
+    });
+  }
+  productListDataSource.reverse();
+  return productListDataSource;
+}
+
 let tableListDataSource = genList(1, 100);
 
-function getRule(req, res, u) {
+function getProducts(req, res, u) {
   let realUrl = u;
 
   if (!realUrl || Object.prototype.toString.call(realUrl) !== '[object String]') {
@@ -179,7 +190,7 @@ function postRule(req, res, u, b) {
 }
 
 export default {
-  'GET /api/rule': getRule,
+  'GET /api/product': getProducts,
   'POST /api/rule': postRule,
   'DELETE /api/rule': postRule,
   'PUT /api/rule': postRule,
