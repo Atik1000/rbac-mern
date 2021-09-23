@@ -86,7 +86,7 @@ const TableList = () => {
   const columns = [
     {
       title: 'Title',
-      dataIndex: 'name',
+      dataIndex: 'title',
       tip: '规则名称是唯一的 key',
       render: (dom, entity) => {
         return (
@@ -103,7 +103,7 @@ const TableList = () => {
     },
     {
       title: 'Description',
-      dataIndex: 'desc',
+      dataIndex: 'description',
       valueType: 'textarea',
     },
     {

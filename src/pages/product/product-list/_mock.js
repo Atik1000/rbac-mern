@@ -1,18 +1,16 @@
 import { parse } from 'url';
 
 // mock tableListDataSource
-const genList = (current, pageSize) => {
+const genProductList = (current, pageSize) => {
   const tableListDataSource = [];
 
   for (let i = 0; i < pageSize; i += 1) {
     const index = (current - 1) * 10 + i;
     tableListDataSource.push({
       key: index,
-      disabled: i % 6 === 0,
-      href: 'https://ant.design',
-      name: `Product ${index}`,
-      desc: 'amazing description',
-      price: Math.floor(Math.random() * 100),
+      title: `Product ${index}`,
+      description: 'amazing description',
+      Price: Math.floor(Math.random() * 1000),
       manufacturingDate: new Date(),
       expireDate: new Date(),
       size: Math.floor(Math.random() * 1000),
@@ -23,25 +21,9 @@ const genList = (current, pageSize) => {
   return tableListDataSource;
 };
 
-const getProductList = (current, pageSize) => {
-  const productListDataSource = [];
 
-  for (let i = 0; i < pageSize; i += 1) {
-    productListDataSource.push({
-      key: index,
-      title: `Product ${index}`,
-      price: Math.floor(Math.random() * 100),
-      description: 'amazing description',
-      manufactureDate: new Date(),
-      expireDate: new Date(),
-      size: Math.floor(Math.random() * 1000),
-    });
-  }
-  productListDataSource.reverse();
-  return productListDataSource;
-}
+let tableListDataSource = genProductList(1, 100);
 
-let tableListDataSource = genList(1, 100);
 
 function getProducts(req, res, u) {
   let realUrl = u;
